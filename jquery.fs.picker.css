@@ -1,0 +1,40 @@
+/*
+ * Picker Plugin [Formstone Library]
+ * @author Ben Plum
+ * @version 0.1
+ *
+ * Copyright © 2012 Ben Plum <mr@benplum.com>
+ * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
+ */
+ 
+ 	.picker-element { left: -999999px; position: absolute; }
+	.picker { margin: 0 0 10px 0; overflow: hidden; }
+	.picker .picker-label { color: #888; cursor: pointer; display: block; float: left; font-size: 14px; float: left; line-height: 16px; }
+	.picker .picker-handle { border: 1px solid #ccc; cursor: pointer; display: block; float: left; height: 16px; margin: 0 5px 0 0; width: 16px; }
+	
+	.picker:hover .picker-label,
+	.picker.focus .picker-label { color: #555; }
+	.picker:hover .picker-handle,
+	.picker.focus .picker-handle { border-color: #aaa; }
+	
+	/* Radio Input */
+	.picker.picker-radio .picker-handle { border-radius: 8px; }
+	.picker.picker-radio .picker-flag { background: #fff; display: block; border-radius: 4px; height: 8px; margin: 3px; width: 8px; }
+	
+	.picker.picker-radio:hover .picker-flag,
+	.picker.picker-radio.focus .picker-flag { background: #ddd; }
+	.picker.picker-radio.checked .picker-flag { background: #999; }
+	
+	/* Checkbox Input */
+	.picker.picker-checkbox .picker-handle { border-radius: 3px; }
+	.picker.picker-checkbox .picker-flag::after { content: ''; color: #ccc; display: block; border-radius: 1px; font-family: Helvetica, Arial, sans-serif; font-size: 14px; height: 100%; line-height: 16px; margin: 0; text-align: center; width: 100%; }
+	
+	.picker.picker-checkbox:hover .picker-flag::after,
+	.picker.picker-checkbox.focus .picker-flag::after { color: #ddd; content: '\2714'; }
+	.picker.picker-checkbox.checked .picker-flag::after { color: #999; content: '\2714'; }
+	
+	/* 'Disabled' State */
+	.picker.disabled .picker-label { color: #ccc; cursor: default; }
+	.picker.disabled .picker-handle { border-color: #eee; cursor: default; }
+	.picker.picker-radio.disabled .picker-flag { background: #fff; }
+	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; content: ''; }
