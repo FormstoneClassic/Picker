@@ -36,5 +36,7 @@
 	/* 'Disabled' State */
 	.picker.disabled .picker-label { color: #ccc; cursor: default; }
 	.picker.disabled .picker-handle { border-color: #eee; cursor: default; }
+	.picker.picker-radio.disabled .picker-flag { background: #fff; }
 	.picker.picker-radio.disabled.checked .picker-flag { background: #eee; }
-	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; }
+	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; content: ''; }
+	.picker.picker-checkbox.disabled.checked .picker-flag::after { color: #eee; content: '\2714'; }
