@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.1
+ * @version 0.2
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -36,5 +36,5 @@
 	/* 'Disabled' State */
 	.picker.disabled .picker-label { color: #ccc; cursor: default; }
 	.picker.disabled .picker-handle { border-color: #eee; cursor: default; }
-	.picker.picker-radio.disabled .picker-flag { background: #fff; }
-	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; content: ''; }
+	.picker.picker-radio.disabled.checked .picker-flag { background: #eee; }
+	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; }
