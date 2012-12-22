@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2
+ * @version 0.2.1
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -29,8 +29,6 @@
 	.picker.picker-checkbox .picker-handle { border-radius: 3px; }
 	.picker.picker-checkbox .picker-flag::after { content: ''; color: #ccc; display: block; border-radius: 1px; font-family: Helvetica, Arial, sans-serif; font-size: 14px; height: 100%; line-height: 16px; margin: 0; text-align: center; width: 100%; }
 	
-	.picker.picker-checkbox:hover .picker-flag::after,
-	.picker.picker-checkbox.focus .picker-flag::after { color: #ddd; content: '\2714'; }
 	.picker.picker-checkbox.checked .picker-flag::after { color: #999; content: '\2714'; }
 	
 	/* 'Disabled' State */
