@@ -1,0 +1,29 @@
+{
+	"name": "picker",
+	"title": "Picker",
+	"description": "A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library.",
+	"keywords": [
+		"radio",
+		"checkbox",
+		"input",
+		"ui",
+		"formstone"
+	],
+	"version": "0.2.1",
+	"author": {
+		"name": "Ben Plum",
+		"url": "http://www.benplum.com"
+	},
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://www.opensource.org/licenses/mit-license.php"
+		}
+	],
+	"docs": "http://www.benplum.com/formstone/picker/",
+	"download": "https://github.com/benplum/Picker",
+	"bugs": "https://github.com/benplum/Boxer/Picker",
+	"dependencies": {
+		"jquery": ">=1.7"
+	}
+}
