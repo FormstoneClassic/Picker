@@ -7,9 +7,10 @@
 		"checkbox",
 		"input",
 		"ui",
-		"formstone"
+		"formstone",
+		"benplum"
 	],
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"author": {
 		"name": "Ben Plum",
 		"url": "http://www.benplum.com"
