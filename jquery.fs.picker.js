@@ -171,7 +171,7 @@ if (jQuery) (function($) {
 		var data = e.data;
 		
 		if (typeof data.group !== "undefined") {
-			$("input[name=" + data.group + "]").not(data.$input).trigger("deselect");
+			$("input[name=\"" + data.group + "\"]").not(data.$input).trigger("deselect");
 		}
 		
 		data.$input.attr("checked", "checked");
