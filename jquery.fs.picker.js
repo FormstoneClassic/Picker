@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.2
+ * @version 0.2.3
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -171,7 +171,7 @@ if (jQuery) (function($) {
 		var data = e.data;
 		
 		if (typeof data.group !== "undefined") {
-			$("input[name=\"" + data.group + "\"]").not(data.$input).trigger("deselect");
+			$('input[name="' + data.group + '"]').not(data.$input).trigger("deselect");
 		}
 		
 		data.$input.attr("checked", "checked");

@@ -10,7 +10,7 @@
 		"formstone",
 		"benplum"
 	],
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"author": {
 		"name": "Ben Plum",
 		"url": "http://www.benplum.com"
@@ -22,6 +22,7 @@
 		}
 	],
 	"docs": "http://www.benplum.com/formstone/picker/",
+	"demo": "http://www.benplum.com/formstone/picker/",
 	"download": "https://github.com/benplum/Picker",
 	"bugs": "https://github.com/benplum/Boxer/Picker",
 	"dependencies": {
