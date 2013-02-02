@@ -24,7 +24,7 @@
 	"docs": "http://www.benplum.com/formstone/picker/",
 	"demo": "http://www.benplum.com/formstone/picker/",
 	"download": "https://github.com/benplum/Picker",
-	"bugs": "https://github.com/benplum/Boxer/Picker",
+	"bugs": "https://github.com/benplum/Picker/issues",
 	"dependencies": {
 		"jquery": ">=1.7"
 	}
