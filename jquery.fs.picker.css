@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.3
+ * @version 0.2.5
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -9,7 +9,13 @@
  
  	.picker-element { left: -999999px; position: absolute; }
 	.picker { margin: 0 0 10px 0; overflow: hidden; }
-	.picker .picker-label { color: #888; cursor: pointer; display: block; float: left; font-size: 14px; float: left; line-height: 16px; }
+	.picker .picker-label { color: #888; cursor: pointer; display: block; float: left; font-size: 14px; float: left; line-height: 16px; 
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		    -ms-user-select: none;
+		     -o-user-select: none;
+		        user-select: none;
+	}
 	.picker .picker-handle { border: 1px solid #ccc; cursor: pointer; display: block; float: left; height: 16px; margin: 0 5px 0 0; width: 16px; }
 	
 	.picker:hover .picker-label,
@@ -27,9 +33,10 @@
 	
 	/* Checkbox Input */
 	.picker.picker-checkbox .picker-handle { border-radius: 3px; }
-	.picker.picker-checkbox .picker-flag::after { content: ''; color: #ccc; display: block; border-radius: 1px; font-family: Helvetica, Arial, sans-serif; font-size: 14px; height: 100%; line-height: 16px; margin: 0; text-align: center; width: 100%; }
+	.picker.picker-checkbox .picker-flag { background: #fff; border-radius: 2px; display: block; height: 100%; margin: 0; width: 100%; }
 	
-	.picker.picker-checkbox.checked .picker-flag::after { color: #999; content: '\2714'; }
+	/* 'Checked' */
+	.picker.picker-checkbox.checked .picker-flag { background: #fff url(fs-picker-icon.png) no-repeat center; }
 	
 	/* 'Disabled' State */
 	.picker.disabled .picker-label { color: #ccc; cursor: default; }

@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.3
+ * @version 0.2.5
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -30,7 +30,7 @@ if (jQuery) (function($) {
 				var $input = $items.eq(i);
 				var $picker = $input.parent(".picker");
 				
-				$input.attr("disabled", "disabled");
+				$input.prop("disabled", true);
 				$picker.addClass("disabled");
 			}
 			return $items;
@@ -43,7 +43,7 @@ if (jQuery) (function($) {
 				var $input = $items.eq(i);
 				var $picker = $input.parent(".picker");
 				
-				$input.attr("disabled", null);
+				$input.prop("disabled", false);
 				$picker.removeClass("disabled");
 			}
 			return $items;
@@ -174,14 +174,14 @@ if (jQuery) (function($) {
 			$('input[name="' + data.group + '"]').not(data.$input).trigger("deselect");
 		}
 		
-		data.$input.attr("checked", "checked");
+		data.$input.prop("checked", true);
 		data.$picker.addClass("checked");
 	}
 	
 	function _onDeselect(e) {
 		var data = e.data;
 		
-		data.$input.attr("checked", null);
+		data.$input.prop("checked", false);
 		data.$picker.removeClass("checked");
 	}
 	
