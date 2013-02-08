@@ -170,7 +170,7 @@ if (jQuery) (function($) {
 	function _onSelect(e) {
 		var data = e.data;
 		
-		if (typeof data.group !== "undefined") {
+		if (typeof data.group !== "undefined" && data.isRadio) {
 			$('input[name="' + data.group + '"]').not(data.$input).trigger("deselect");
 		}
 		
