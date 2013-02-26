@@ -85,7 +85,7 @@ if (jQuery) (function($) {
 					group = $input.attr("name");
 				
 				// Modify DOM
-				$merged.wrapAll('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />');
+				$merged.wrapAll('<div class="picker ' + typeClass + ' ' + settings.customClass + '" />');
 				
 				$input.addClass("picker-element")
 					  .after('<div class="picker-handle"><div class="picker-flag" /></div>');
