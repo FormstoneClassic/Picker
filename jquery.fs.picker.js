@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.7
+ * @version 0.2.8
  *
  * Copyright © 2012 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -135,7 +135,7 @@ if (jQuery) (function($) {
 		var data = e.data;
 		
 		if (!data.$input.is(":disabled")) {
-			// Change events fire before, we change the val
+			// Change events fire before we change the val
 			if (data.$input.is(":checked")) {
 				if (!data.isRadio) {
 					_onDeselect(e);
@@ -147,21 +147,23 @@ if (jQuery) (function($) {
 	}
 	
 	// Handle change
-	function _onChange(e) {
-		var data = e.data;
-		
-		if (!data.$input.is(":disabled")) {
-			// Change events fire after val has changed
-			if (data.$input.is(":checked")) {
-				_onSelect(e);
-			} else {
-				_onDeselect(e);
+	function _onChange(e, internal) {
+		if (!internal) {
+			var data = e.data;
+			
+			if (!data.$input.is(":disabled")) {
+				// Change events fire after val has changed
+				if (data.$input.is(":checked")) {
+					_onSelect(e, true);
+				} else {
+					_onDeselect(e, true);
+				}
 			}
 		}
 	}
 	
 	// Handle select
-	function _onSelect(e) {
+	function _onSelect(e, internal) {
 		var data = e.data;
 		
 		if (typeof data.group !== "undefined" && data.isRadio) {
@@ -170,14 +172,22 @@ if (jQuery) (function($) {
 		
 		data.$input.prop("checked", true);
 		data.$picker.addClass("checked");
+		
+		if (!internal) {
+			data.$input.trigger("change", [ true ]);
+		}
 	}
 	
 	// Handle deselect
-	function _onDeselect(e) {
+	function _onDeselect(e, internal) {
 		var data = e.data;
 		
 		data.$input.prop("checked", false);
 		data.$picker.removeClass("checked");
+		
+		if (!internal) {
+			data.$input.trigger("change", [ true ]);
+		}
 	}
 	
 	// Handle focus
