@@ -18,16 +18,20 @@
 	}
 	.picker .picker-handle { border: 1px solid #ccc; cursor: pointer; display: block; float: left; height: 16px; margin: 0 5px 0 0; width: 16px; }
 	
-	.picker:hover .picker-label,
+	@media screen and (min-width: 740px) {
+		.picker:hover .picker-label { color: #555; }
+		.picker:hover .picker-handle { border-color: #aaa; }
+		
+		.picker.picker-radio:hover .picker-flag { background: #ddd; }
+	}
+	
 	.picker.focus .picker-label { color: #555; }
-	.picker:hover .picker-handle,
 	.picker.focus .picker-handle { border-color: #aaa; }
 	
 	/* Radio Input */
 	.picker.picker-radio .picker-handle { border-radius: 8px; }
 	.picker.picker-radio .picker-flag { background: #fff; display: block; border-radius: 4px; height: 8px; margin: 3px; width: 8px; }
 	
-	.picker.picker-radio:hover .picker-flag,
 	.picker.picker-radio.focus .picker-flag { background: #ddd; }
 	.picker.picker-radio.checked .picker-flag { background: #999; }
 	
