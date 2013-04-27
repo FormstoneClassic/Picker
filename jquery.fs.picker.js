@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.8
+ * @version 0.2.9
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -79,20 +79,20 @@ if (jQuery) (function($) {
 			
 			if (!$input.data("picker")) {
 				var $label = $("label[for=" + $input.attr("id") + "]"),
-					$merged = $($.merge($.merge([], $input), $label)),
+					$wrap = $(($input.parents("label")[0] == $label[0]) ? $.merge([], $label) : $.merge($.merge([], $input), $label)),
 					type = $input.attr("type"),
 					typeClass = "picker-" + (type == "radio" ? "radio" : "checkbox"),
 					group = $input.attr("name");
 				
 				// Modify DOM
-				$merged.wrapAll('<div class="picker ' + typeClass + ' ' + settings.customClass + '" />');
+				$wrap.wrapAll('<div class="picker ' + typeClass + ' ' + settings.customClass + '" />');
 				
 				$input.addClass("picker-element")
 					  .after('<div class="picker-handle"><div class="picker-flag" /></div>');
 				$label.addClass("picker-label");
 				
 				// Store plugin data
-				var $picker = $input.parent(".picker");
+				var $picker = $input.parents(".picker");
 				var $handle = $picker.find(".picker-handle");
 				
 				// Check checked
