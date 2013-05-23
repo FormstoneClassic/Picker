@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.2.9
+ * @version 0.3.0
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -68,63 +68,69 @@ if (jQuery) (function($) {
 	
 	// Initialize
 	function _init(opts) {
-		opts = opts || {};
-		
-		// Define settings
-		var settings = $.extend({}, options, opts);
+		// Settings
+		opts = $.extend({}, options, opts);
 		
 		// Apply to each element
-		return $(this).each(function(i) {
-			var $input = $(this);
+		var $items = $(this);
+		for (var i = 0, count = $items.length; i < count; i++) {
+			_build($items.eq(i), opts);
+		}
+		return $items;
+	}
+	
+	// Build 
+	function _build($input, opts) {
+		if (!$input.data("picker")) {
+			// EXTEND OPTIONS
+			$.extend(opts, $input.data("picker-options"));
 			
-			if (!$input.data("picker")) {
-				var $label = $("label[for=" + $input.attr("id") + "]"),
-					$wrap = $(($input.parents("label")[0] == $label[0]) ? $.merge([], $label) : $.merge($.merge([], $input), $label)),
-					type = $input.attr("type"),
-					typeClass = "picker-" + (type == "radio" ? "radio" : "checkbox"),
-					group = $input.attr("name");
-				
-				// Modify DOM
-				$wrap.wrapAll('<div class="picker ' + typeClass + ' ' + settings.customClass + '" />');
-				
-				$input.addClass("picker-element")
-					  .after('<div class="picker-handle"><div class="picker-flag" /></div>');
-				$label.addClass("picker-label");
-				
-				// Store plugin data
-				var $picker = $input.parents(".picker");
-				var $handle = $picker.find(".picker-handle");
-				
-				// Check checked
-				if ($input.is(":checked")) {
-					$picker.addClass("checked");
-				}
-				
-				// Check disabled
-				if ($input.is(":disabled")) {
-					$picker.addClass("disabled");
-				}
-				
-				var data = $.extend({
-					$picker: $picker,
-					$input: $input,
-					$handle: $handle,
-					$label: $label,
-					group: group,
-					isRadio: (type == "radio"),
-					isCheckbox: (type == "checkbox")
-				}, settings);
-				
-				// Bind click events
-				$input.on("focus.picker", data, _onFocus)
-					  .on("blur.picker", data, _onBlur)
-					  .on("change.picker", data, _onChange)
-					  .on("deselect.picker", data, _onDeselect);
-				
-				$picker.on("click.picker", ".picker-handle", data, _onClick)
-					   .data("picker", data);
+			var $label = $("label[for=" + $input.attr("id") + "]"),
+				$wrap = $(($input.parents("label")[0] == $label[0]) ? $.merge([], $label) : $.merge($.merge([], $input), $label)),
+				type = $input.attr("type"),
+				typeClass = "picker-" + (type == "radio" ? "radio" : "checkbox"),
+				group = $input.attr("name");
+			
+			// Modify DOM
+			$wrap.wrapAll('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />');
+			
+			$input.addClass("picker-element")
+				  .after('<div class="picker-handle"><div class="picker-flag" /></div>');
+			$label.addClass("picker-label");
+			
+			// Store plugin data
+			var $picker = $input.parents(".picker");
+			var $handle = $picker.find(".picker-handle");
+			
+			// Check checked
+			if ($input.is(":checked")) {
+				$picker.addClass("checked");
 			}
-		});
+			
+			// Check disabled
+			if ($input.is(":disabled")) {
+				$picker.addClass("disabled");
+			}
+			
+			opts = $.extend({
+				$picker: $picker,
+				$input: $input,
+				$handle: $handle,
+				$label: $label,
+				group: group,
+				isRadio: (type == "radio"),
+				isCheckbox: (type == "checkbox")
+			}, opts);
+			
+			// Bind click events
+			$input.on("focus.picker", opts, _onFocus)
+				  .on("blur.picker", opts, _onBlur)
+				  .on("change.picker", opts, _onChange)
+				  .on("deselect.picker", opts, _onDeselect);
+			
+			$picker.on("click.picker", ".picker-handle", opts, _onClick)
+				   .data("picker", opts);
+		}
 	}
 	
 	// Handle click
