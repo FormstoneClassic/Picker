@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.3.0
+ * @version 0.3.1
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -38,9 +38,26 @@
 	/* Checkbox Input */
 	.picker.picker-checkbox .picker-handle { border-radius: 3px; }
 	.picker.picker-checkbox .picker-flag { background: #fff; border-radius: 2px; display: block; height: 100%; margin: 0; width: 100%; }
-	
 	/* 'Checked' */
 	.picker.picker-checkbox.checked .picker-flag { background: #fff url(fs-picker-icon.png) no-repeat center; }
+	
+	/* Toggle Input */
+	.picker.picker-toggle { padding: 20px 0 0; position: relative; }
+	.picker.picker-toggle .picker-toggle-label { color: #999; font-size: 12px; position: absolute; text-transform: uppercase; top: 0; }
+	.picker.picker-toggle .picker-toggle-label.on { left: 0; }
+	.picker.picker-toggle .picker-toggle-label.off { color: #333; right: 0; }
+	.picker.picker-toggle .picker-label { display: none; }
+	.picker.picker-toggle .picker-handle { border-radius: 3px; position: relative; width: 100%; }
+	.picker.picker-toggle .picker-flag { background: #666; border-radius: 2px; display: block; height: 100%; left: 50%; margin: 0; position: absolute; top: 0; width: 50%; 
+		-webkit-transition: left 0.1s linear;
+		   -moz-transition: left 0.1s linear;
+		    -ms-transition: left 0.1s linear;
+		     -o-transition: left 0.1s linear;
+		        transition: left 0.1s linear;
+	}
+	.picker.picker-toggle.checked .picker-toggle-label.on { color: #333; }
+	.picker.picker-toggle.checked .picker-toggle-label.off { color: #999; }
+	.picker.picker-toggle.checked .picker-flag { background: #666; left: 0; }
 	
 	/* 'Disabled' State */
 	.picker.disabled .picker-label { color: #ccc; cursor: default; }

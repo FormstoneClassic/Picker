@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.3.0
+ * @version 0.3.1
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -11,7 +11,10 @@ if (jQuery) (function($) {
 	
 	// Default Options
 	var options = {
-		customClass: ""
+		customClass: "",
+		toggle: false,
+		labelOn: "ON",
+		labelOff: "OFF"
 	};
 	
 	// Public Methods
@@ -51,11 +54,13 @@ if (jQuery) (function($) {
 				var $input = $(this),
 					$picker = $input.parent(".picker"),
 					$handle = $picker.find(".picker-handle"),
+					$labels = $picker.find(".picker-toggle-label"),
 					$label = $("label[for=" + $input.attr("id") + "]");
 				
 				// Restore DOM / Unbind click events
 				$picker.off(".picker");
 				$handle.remove();
+				$labels.remove();
 				$input.off(".picker")
 					  .removeClass("picker-element")
 					  .unwrap();
@@ -83,24 +88,31 @@ if (jQuery) (function($) {
 	function _build($input, opts) {
 		if (!$input.data("picker")) {
 			// EXTEND OPTIONS
-			$.extend(opts, $input.data("picker-options"));
+			opts = $.extend({}, opts, $input.data("picker-options"));
 			
 			var $label = $("label[for=" + $input.attr("id") + "]"),
 				$wrap = $(($input.parents("label")[0] == $label[0]) ? $.merge([], $label) : $.merge($.merge([], $input), $label)),
 				type = $input.attr("type"),
 				typeClass = "picker-" + (type == "radio" ? "radio" : "checkbox"),
-				group = $input.attr("name");
+				group = $input.attr("name"),
+				html = '<div class="picker-handle"><div class="picker-flag" /></div>';
+			
+			if (opts.toggle) {
+				typeClass += " picker-toggle";
+				html = '<span class="picker-toggle-label on">' + opts.labelOn + '</span><span class="picker-toggle-label off">' + opts.labelOff + '</span>' + html;
+			}
 			
 			// Modify DOM
 			$wrap.wrapAll('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />');
 			
 			$input.addClass("picker-element")
-				  .after('<div class="picker-handle"><div class="picker-flag" /></div>');
+				  .after(html);
 			$label.addClass("picker-label");
 			
 			// Store plugin data
-			var $picker = $input.parents(".picker");
-			var $handle = $picker.find(".picker-handle");
+			var $picker = $input.parents(".picker"),
+				$handle = $picker.find(".picker-handle"),
+				$labels = $picker.find(".picker-toggle-label");
 			
 			// Check checked
 			if ($input.is(":checked")) {
@@ -112,15 +124,16 @@ if (jQuery) (function($) {
 				$picker.addClass("disabled");
 			}
 			
-			opts = $.extend({
+			$.extend(opts, {
 				$picker: $picker,
 				$input: $input,
 				$handle: $handle,
 				$label: $label,
+				$labels: $labels,
 				group: group,
 				isRadio: (type == "radio"),
 				isCheckbox: (type == "checkbox")
-			}, opts);
+			});
 			
 			// Bind click events
 			$input.on("focus.picker", opts, _onFocus)
@@ -128,7 +141,7 @@ if (jQuery) (function($) {
 				  .on("change.picker", opts, _onChange)
 				  .on("deselect.picker", opts, _onDeselect);
 			
-			$picker.on("click.picker", ".picker-handle", opts, _onClick)
+			$picker.on("click.picker", opts, _onClick)
 				   .data("picker", opts);
 		}
 	}
