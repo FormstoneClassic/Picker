@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.3.1
+ * @version 0.3.2
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -65,6 +65,22 @@ if (jQuery) (function($) {
 					  .removeClass("picker-element")
 					  .unwrap();
 				$label.removeClass("picker-label");
+			});
+		},
+		
+		// Update field
+		update: function() {
+			return $(this).each(function(i) {
+				var $input = $(this),
+					data = $input.parent(".picker").data("picker");
+				
+				if (!$input.is(":disabled")) {
+					if ($input.is(":checked")) {
+						_onSelect({ data: data }, true);
+					} else {
+						_onDeselect({ data: data }, true);
+					}
+				}
 			});
 		}
 	};
