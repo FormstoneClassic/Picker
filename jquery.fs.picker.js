@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.3.2
+ * @version 0.3.3
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -107,7 +107,6 @@ if (jQuery) (function($) {
 			opts = $.extend({}, opts, $input.data("picker-options"));
 			
 			var $label = $("label[for=" + $input.attr("id") + "]"),
-				$wrap = $(($input.parents("label")[0] == $label[0]) ? $.merge([], $label) : $.merge($.merge([], $input), $label)),
 				type = $input.attr("type"),
 				typeClass = "picker-" + (type == "radio" ? "radio" : "checkbox"),
 				group = $input.attr("name"),
@@ -119,14 +118,13 @@ if (jQuery) (function($) {
 			}
 			
 			// Modify DOM
-			$wrap.wrapAll('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />');
-			
-			$input.addClass("picker-element")
-				  .after(html);
-			$label.addClass("picker-label");
+			$input.addClass("picker-element");
+			$label.wrap('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />')
+				  .before(html)
+				  .addClass("picker-label");
 			
 			// Store plugin data
-			var $picker = $input.parents(".picker"),
+			var $picker = $label.parents(".picker"),
 				$handle = $picker.find(".picker-handle"),
 				$labels = $picker.find(".picker-toggle-label");
 			
@@ -162,39 +160,40 @@ if (jQuery) (function($) {
 		}
 	}
 	
-	// Handle click
+	// Handle Picker click
 	function _onClick(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		
 		var data = e.data;
 		
-		if (!data.$input.is(":disabled")) {
-			// Change events fire before we change the val
-			if (data.$input.is(":checked")) {
-				if (!data.isRadio) {
-					_onDeselect(e);
-				}
-			} else {
-				_onSelect(e);
-			}
+		if (!$(e.target).is(data.$input)) {
+			data.$input.trigger("click");
 		}
 	}
 	
-	// Handle change
-	function _onChange(e, internal) {
-		if (!internal) {
-			var data = e.data;
-			
+	// Handle input click
+	function _onChange(e) {
+		e.stopPropagation();
+		
+		var data = e.data;
+		
 			if (!data.$input.is(":disabled")) {
-				// Change events fire after val has changed
-				if (data.$input.is(":checked")) {
-					_onSelect(e, true);
+				// Checkbox change events fire after state has changed
+				var checked = data.$input.is(":checked");
+				if (data.isCheckbox) {
+					if (checked) {
+						_onSelect(e, true);
+					} else {
+						_onDeselect(e, true);
+					}
 				} else {
-					_onDeselect(e, true);
+					// radio
+					if (checked) {
+						_onSelect(e);
+					}
 				}
 			}
-		}
 	}
 	
 	// Handle select
@@ -205,24 +204,14 @@ if (jQuery) (function($) {
 			$('input[name="' + data.group + '"]').not(data.$input).trigger("deselect");
 		}
 		
-		data.$input.prop("checked", true);
 		data.$picker.addClass("checked");
-		
-		if (!internal) {
-			data.$input.trigger("change", [ true ]);
-		}
 	}
 	
 	// Handle deselect
 	function _onDeselect(e, internal) {
 		var data = e.data;
-		
-		data.$input.prop("checked", false);
+
 		data.$picker.removeClass("checked");
-		
-		if (!internal) {
-			data.$input.trigger("change", [ true ]);
-		}
 	}
 	
 	// Handle focus
