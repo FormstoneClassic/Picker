@@ -1,7 +1,7 @@
 /*
  * Picker Plugin [Formstone Library]
  * @author Ben Plum
- * @version 0.3.3
+ * @version 0.3.4
  *
  * Copyright © 2013 Ben Plum <mr@benplum.com>
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
@@ -28,53 +28,66 @@ if (jQuery) (function($) {
 		
 		// Disable field
 		disable: function() {
-			return $(this).each(function(i) {
-				var $input = $(this),
-					$picker = $input.parent(".picker");
-				
-				$input.prop("disabled", true);
-				$picker.addClass("disabled");
+			return $(this).each(function(i, input) {
+				var $input = $(input),
+					data = $input.data("picker");
+					
+				if (typeof data != "undefined") {
+					var $picker = data.$picker;
+					
+					$input.prop("disabled", true);
+					$picker.addClass("disabled");
+				}
 			});
 		},
 		
 		// Enable field
 		enable: function() {
-			return $(this).each(function(i) {
-				var $input = $(this),
-					$picker = $input.parent(".picker");
-				
-				$input.prop("disabled", false);
-				$picker.removeClass("disabled");
+			return $(this).each(function(i, input) {
+				var $input = $(input),
+					data = $input.data("picker");
+					
+				if (typeof data != "undefined") {
+					var $picker = data.$picker;
+					
+					$input.prop("disabled", false);
+					$picker.removeClass("disabled");
+				}
 			});
 		},
 		
 		// Destroy picker
 		destroy: function() {
-			return $(this).each(function(i) {
-				var $input = $(this),
-					$picker = $input.parent(".picker"),
-					$handle = $picker.find(".picker-handle"),
-					$labels = $picker.find(".picker-toggle-label"),
-					$label = $("label[for=" + $input.attr("id") + "]");
-				
-				// Restore DOM / Unbind click events
-				$picker.off(".picker");
-				$handle.remove();
-				$labels.remove();
-				$input.off(".picker")
-					  .removeClass("picker-element")
-					  .unwrap();
-				$label.removeClass("picker-label");
+			return $(this).each(function(i, input) {
+				var $input = $(input),
+					data = $input.data("picker");
+					
+				if (typeof data != "undefined") {
+					var $picker = data.$picker,
+						$handle = $picker.find(".picker-handle"),
+						$labels = $picker.find(".picker-toggle-label"),
+						$label = $("label[for=" + $input.attr("id") + "]");
+					
+					// Restore DOM / Unbind click events
+					$picker.off(".picker");
+					$handle.remove();
+					$labels.remove();
+					$input.off(".picker")
+						  .removeClass("picker-element")
+						  .data("picker", null);
+					$label.removeClass("picker-label")
+						  .unwrap();
+				}
 			});
 		},
 		
 		// Update field
 		update: function() {
-			return $(this).each(function(i) {
-				var $input = $(this),
-					data = $input.parent(".picker").data("picker");
+			return $(this).each(function(i, input) {
+				var $input = $(input),
+					data = $input.data("picker");
 				
-				if (!$input.is(":disabled")) {
+				if (typeof data != "undefined" && !$input.is(":disabled")) {
 					if ($input.is(":checked")) {
 						_onSelect({ data: data }, true);
 					} else {
@@ -153,10 +166,10 @@ if (jQuery) (function($) {
 			$input.on("focus.picker", opts, _onFocus)
 				  .on("blur.picker", opts, _onBlur)
 				  .on("change.picker", opts, _onChange)
-				  .on("deselect.picker", opts, _onDeselect);
+				  .on("deselect.picker", opts, _onDeselect)
+				  .data("picker", opts);
 			
-			$picker.on("click.picker", opts, _onClick)
-				   .data("picker", opts);
+			$picker.on("click.picker", opts, _onClick);
 		}
 	}
 	
