@@ -21,7 +21,8 @@
 		"fs-picker-icon.png"
 	],
 	"ignore": [
-		"*.json"
+		"*.json",
+		"*.jquery.json"
 	],
 	"dependencies": {
 		"jquery": ">= 1.7.0"
