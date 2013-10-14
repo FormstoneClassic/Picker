@@ -1,6 +1,6 @@
 {
 	"name": "Picker",
-	"version": "0.3.5",
+	"version": "0.3.6",
 	"description": "A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library.",
 	"keywords": [
 		"radio",
