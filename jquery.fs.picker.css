@@ -7,7 +7,7 @@
  * Released under the MIT License <http://www.opensource.org/licenses/mit-license.php>
  */
  
- 	.picker-element { left: -999999px; position: absolute; }
+ 	.picker-element { left: -9999px; position: absolute; }
 	.picker { cursor: pointer; margin: 0 0 10px 0; overflow: hidden; }
 	.picker .picker-label { color: #888; display: block; float: left; font-size: 14px; float: left; line-height: 16px; 
 		-webkit-user-select: none;
