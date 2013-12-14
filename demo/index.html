@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    	
+		<title>Picker Demo</title>
+		
+		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css">
+		<link href="http://www.benplum.com/css/demo.css" rel="stylesheet" type="text/css" media="all" />
+		
+		<!--[if LTE IE 8]>
+			<link href="http://www.benplum.com/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
+		<![endif]-->
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://www.benplum.com/js/demo.js"></script>
+		
+		<link href="../jquery.fs.picker.css" rel="stylesheet" type="text/css" media="all" />
+		<script src="../jquery.fs.picker.js"></script>
+		
+		<style>
+			
+		</style>
+		
+		<script>
+			$(document).ready(function() {
+				$("input[type=checkbox], input[type=radio]").picker();
+			});
+		</script>
+	</head>
+	<body class="gridlock demo">
+		<header class="header">
+			<div class="row">
+				<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+					<h1>Picker Demo</h1>
+					<hr />
+					<p>A jQuery plugin for replacing default checkboxes and radios. <a href="http://www.benplum.com/formstone/picker/" class="no-pronto">Learn More.</a></p>
+				</div>
+			</div>
+		</header>
+		<article class="row page">
+			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+				
+				<!-- BASIC -->
+				<h2>Basic</h2>
+				<p>Picker will automatically detect the type of the input and render the proper styles.</p>
+				
+				<pre><code class="language-javascript">$("input[type=radio], input[type=checkbox]").picker();</code></pre>
+				<pre><code class="language-markup">&lt;fieldset&gt;
+    &lt;input type="radio" id="radio_1" name="radio_1" value="Radio One" /&gt;
+    &lt;label for="radio_1"&gt;One&lt;/label&gt;
+&lt;/fieldset&gt;
+
+&lt;fieldset&gt;
+    &lt;input type="checkbox" id="checkbox_1" name="checkbox_1" value="Checkbox One" /&gt;
+    &lt;label for="checkbox_1"&gt;One&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+				
+				<h5>Demo</h5>
+					<div class="row">
+						<div class="desktop-half">
+						<h4 style="margin-top: 0;">Radio</h4>
+				
+						<fieldset>
+							<input checked="checked" class="radio" id="group_1_1" name="group_1" type="radio" value="One" /> 
+							<label for="group_1_1">One</label> 
+							<input class="radio" id="group_1_2" name="group_1" type="radio" value="Two" />
+							<label for="group_1_2">Two</label> 
+							
+				          <label for="group_1_3"><input class="radio" disabled="disabled" id="group_1_3" name="group_1" type="radio" value="Three" /> Three</label>
+						</fieldset>
+					</div>
+						
+					<div class="desktop-half">
+						<h4 style="margin-top: 0;">Checkbox</h4>
+						<fieldset>
+							<input checked="checked" class="checkbox" id="checkbox_1" name="checkbox_1" type="checkbox" value="One" />
+							<label for="checkbox_1">One</label>
+							<input class="checkbox" id="checkbox_2" name="checkbox_2" type="checkbox" value="Two" /> 
+							<label for="checkbox_2">Two</label> 
+							<input class="checkbox" disabled="disabled" id="checkbox_3" name="checkbox_3" type="checkbox" value="Three" /> 
+							<label for="checkbox_3">Three</label>
+						</fieldset>
+					</div>
+				</div>
+				
+			</div>
+		</article>
+	</body>
+</html>
