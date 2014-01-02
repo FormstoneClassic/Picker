@@ -1,5 +1,5 @@
 /* 
- * Picker v0.5.0 - 2014-01-02 
+ * Picker v0.5.1 - 2014-01-02 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://www.benplum.com/formstone/picker/ 
  * 
@@ -10,7 +10,7 @@
  * @plugin 
  * @name Picker 
  * @description A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
- * @version 0.5.0 
+ * @version 0.5.1 
  */ 
 
 ;(function ($, window) {
@@ -37,6 +37,7 @@
 		 * @name defaults
 		 * @description Sets default plugin options
 		 * @param opts [object] <{}> "Options object"
+		 * @example $(".target").picker("defaults", opts);
 		 */
 		defaults: function(opts) {
 			options = $.extend(options, opts || {});
@@ -47,6 +48,7 @@
 		 * @method 
 		 * @name disable
 		 * @description Disables target instance
+		 * @example $(".target").picker("disable");
 		 */
 		disable: function() {
 			return $(this).each(function(i, input) {
@@ -66,6 +68,7 @@
 		 * @method 
 		 * @name enable
 		 * @description Enables target instance
+		 * @example $(".target").picker("enable");
 		 */
 		enable: function() {
 			return $(this).each(function(i, input) {
@@ -85,6 +88,7 @@
 		 * @method 
 		 * @name destroy
 		 * @description Removes instance of plugin
+		 * @example $(".target").picker("destroy");
 		 */
 		destroy: function() {
 			return $(this).each(function(i, input) {
@@ -114,6 +118,7 @@
 		 * @method 
 		 * @name update
 		 * @description Updates instance of plugin
+		 * @example $(".target").picker("update");
 		 */
 		update: function() {
 			return $(this).each(function(i, input) {
