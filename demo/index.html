@@ -85,6 +85,29 @@
 					</div>
 				</div>
 				
+				<br />
+				
+				<!-- TOGGLE -->
+				<h2>Toggle</h2>
+				<p>Picker can also render a 'toggle' style checkbox.</p>
+				
+				<pre><code class="language-javascript">$("input[type=checkbox]").picker({
+	toggle: true
+});</code></pre>
+								
+				<h5>Demo</h5>
+					<div class="row">
+						<fieldset style="max-width: 80px">
+							<input checked="checked" class="toggle" id="toggle_1" name="toggle_1" type="checkbox" value="One" data-picker-options='{"toggle":true}' />
+							<label for="toggle_1">One</label>
+							<input class="toggle" id="toggle_2" name="toggle_2" type="checkbox" value="Two" data-picker-options='{"toggle":true}' /> 
+							<label for="toggle_2">Two</label> 
+							<input class="toggle" disabled="disabled" id="toggle_3" name="toggle_3" type="checkbox" value="Three" data-picker-options='{"toggle":true}' /> 
+							<label for="toggle_3">Three</label>
+						</fieldset>
+					</div>
+				</div>
+				
 			</div>
 		</article>
 	</body>
