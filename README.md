@@ -3,7 +3,7 @@
 
 A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
 
-- [Demo](http://www.benplum.com/components/picker/demo/index.html) 
+- [Demo](http://www.benplum.com/components/Picker/demo/index.html) 
 - [Documentation](http://www.benplum.com/formstone/picker/) 
 
 #### Bower Support 
