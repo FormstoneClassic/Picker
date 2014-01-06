@@ -18,12 +18,13 @@
   },
   "description": "A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library.",
   "keywords": [
-    "javascript",
-    "jquery",
     "radio",
     "checkbox",
     "input",
+    "form",
     "ui",
+    "javascript",
+    "jquery",
     "formstone",
     "benplum"
   ],
