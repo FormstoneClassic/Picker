@@ -8,14 +8,14 @@
 		
 		<link href="http://fonts.googleapis.com/css?family=Lato:300,400,900" rel="stylesheet" type="text/css" media="all" />
 		<link href="http://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet" type="text/css">
-		<link href="http://www.benplum.com/css/demo.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all" />
 		
 		<!--[if LTE IE 8]>
-			<link href="http://www.benplum.com/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
+			<link href="http://formstone.it/css/demo.ie.css" rel="stylesheet" type="text/css" media="all" />
 		<![endif]-->
 		
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script src="http://www.benplum.com/js/demo.js"></script>
+		<script src="http://formstone.it/js/demo.js"></script>
 		
 		<link href="../jquery.fs.picker.css" rel="stylesheet" type="text/css" media="all" />
 		<script src="../jquery.fs.picker.js"></script>
@@ -31,23 +31,28 @@
 		</script>
 	</head>
 	<body class="gridlock demo">
-		<header class="header">
+		<header id="header">
 			<div class="row">
-				<div class="mobile-full tablet-full desktop-8 desktop-push-2">
-					<h1>Picker Demo</h1>
-					<p>A jQuery plugin for replacing default checkboxes and radios. <a href="http://www.benplum.com/formstone/picker/" class="no-pronto">Learn More.</a></p>
+				<div class="all-full">
+					<a href="http://formstone.it/" class="branding">Formstone</a>
 				</div>
 			</div>
 		</header>
 		<article class="row page">
 			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+				<header class="header">
+					<h1>Picker Demo</h1>
+					<!-- <p>A technical demonstration of the jQuery plugin.</p> -->
+					<br />
+					<a href="http://formstone.it/picker/" class="button">View Documentation</a>
+				</header>
 				
 				<!-- BASIC -->
 				<h2>Basic</h2>
 				<p>Picker will automatically detect the type of the input and render the proper styles.</p>
 				
-				<pre><code class="language-javascript">$("input[type=radio], input[type=checkbox]").picker();</code></pre>
-				<pre><code class="language-markup">&lt;fieldset&gt;
+				<pre class="example"><code class="language-javascript">$("input[type=radio], input[type=checkbox]").picker();</code></pre>
+				<pre class="example"><code class="language-markup">&lt;fieldset&gt;
     &lt;input type="radio" id="radio_1" name="radio_1" value="Radio One" /&gt;
     &lt;label for="radio_1"&gt;One&lt;/label&gt;
 &lt;/fieldset&gt;
@@ -58,8 +63,8 @@
 &lt;/fieldset&gt;</code></pre>
 				
 				<h5>Demo</h5>
-					<div class="row">
-						<div class="desktop-half">
+				<div class="row">
+					<div class="mobile-half tablet-third desktop-4">
 						<h4 style="margin-top: 0;">Radio</h4>
 				
 						<fieldset>
@@ -71,8 +76,7 @@
 				          <label for="group_1_3"><input class="radio" disabled="disabled" id="group_1_3" name="group_1" type="radio" value="Three" /> Three</label>
 						</fieldset>
 					</div>
-						
-					<div class="desktop-half">
+					<div class="mobile-half tablet-third desktop-4">
 						<h4 style="margin-top: 0;">Checkbox</h4>
 						<fieldset>
 							<input checked="checked" class="checkbox" id="checkbox_1" name="checkbox_1" type="checkbox" value="One" />
@@ -91,7 +95,7 @@
 				<h2>Toggle</h2>
 				<p>Picker can also render a 'toggle' style checkbox.</p>
 				
-				<pre><code class="language-javascript">$("input[type=checkbox]").picker({
+				<pre class="example"><code class="language-javascript">$("input[type=checkbox]").picker({
 	toggle: true
 });</code></pre>
 								
