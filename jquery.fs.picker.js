@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.2 - 2014-01-13 
+ * Picker v3.0.3 - 2014-01-13 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -13,14 +13,16 @@
 	 * @options
 	 * @param customClass [string] <''> "Class applied to instance"
 	 * @param toggle [boolean] <false> "Render 'toggle' styles"
-	 * @param labelOn [string] <'ON'> "Label for 'On' position; 'toggle' only"
-	 * @param labelOff [string] <'OFF'> "Label for 'Off' position; 'toggle' only"
+	 * @param labels.on [string] <'ON'> "Label for 'On' position; 'toggle' only"
+	 * @param labels.off [string] <'OFF'> "Label for 'Off' position; 'toggle' only"
 	 */
 	var options = {
 		customClass: "",
 		toggle: false,
-		labelOn: "ON",
-		labelOff: "OFF"
+		labels: {
+			on: "ON",
+			off: "OFF"
+		}
 	};
 
 	var pub = {
@@ -35,6 +37,36 @@
 		defaults: function(opts) {
 			options = $.extend(options, opts || {});
 			return $(this);
+		},
+
+		/**
+		 * @method
+		 * @name destroy
+		 * @description Removes instance of plugin
+		 * @example $(".target").picker("destroy");
+		 */
+		destroy: function() {
+			return $(this).each(function(i, input) {
+				var $input = $(input),
+					data = $input.data("picker");
+
+				if (typeof data !== "undefined") {
+					var $picker = data.$picker,
+						$handle = $picker.find(".picker-handle"),
+						$labels = $picker.find(".picker-toggle-label"),
+						$label = $("label[for=" + $input.attr("id") + "]");
+
+					// Restore DOM / Unbind click events
+					$picker.off(".picker");
+					$handle.remove();
+					$labels.remove();
+					$input.off(".picker")
+						  .removeClass("picker-element")
+						  .data("picker", null);
+					$label.removeClass("picker-label")
+						  .unwrap();
+				}
+			});
 		},
 
 		/**
@@ -73,36 +105,6 @@
 
 					$input.prop("disabled", false);
 					$picker.removeClass("disabled");
-				}
-			});
-		},
-
-		/**
-		 * @method
-		 * @name destroy
-		 * @description Removes instance of plugin
-		 * @example $(".target").picker("destroy");
-		 */
-		destroy: function() {
-			return $(this).each(function(i, input) {
-				var $input = $(input),
-					data = $input.data("picker");
-
-				if (typeof data !== "undefined") {
-					var $picker = data.$picker,
-						$handle = $picker.find(".picker-handle"),
-						$labels = $picker.find(".picker-toggle-label"),
-						$label = $("label[for=" + $input.attr("id") + "]");
-
-					// Restore DOM / Unbind click events
-					$picker.off(".picker");
-					$handle.remove();
-					$labels.remove();
-					$input.off(".picker")
-						  .removeClass("picker-element")
-						  .data("picker", null);
-					$label.removeClass("picker-label")
-						  .unwrap();
 				}
 			});
 		},
@@ -167,7 +169,7 @@
 
 			if (opts.toggle) {
 				typeClass += " picker-toggle";
-				html = '<span class="picker-toggle-label on">' + opts.labelOn + '</span><span class="picker-toggle-label off">' + opts.labelOff + '</span>' + html;
+				html = '<span class="picker-toggle-label on">' + opts.labels.on + '</span><span class="picker-toggle-label off">' + opts.labels.off + '</span>' + html;
 			}
 
 			// Modify DOM
