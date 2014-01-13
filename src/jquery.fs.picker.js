@@ -1,6 +1,6 @@
 ;(function ($, window) {
 	"use strict";
-	
+
 	/**
 	 * @options
 	 * @param customClass [string] <''> "Class applied to instance"
@@ -14,23 +14,23 @@
 		labelOn: "ON",
 		labelOff: "OFF"
 	};
-	
+
 	var pub = {
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name defaults
 		 * @description Sets default plugin options
 		 * @param opts [object] <{}> "Options object"
-		 * @example $(".target").picker("defaults", opts);
+		 * @example $.picker("defaults", opts);
 		 */
 		defaults: function(opts) {
 			options = $.extend(options, opts || {});
 			return $(this);
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name disable
 		 * @description Disables target instance
 		 * @example $(".target").picker("disable");
@@ -39,18 +39,18 @@
 			return $(this).each(function(i, input) {
 				var $input = $(input),
 					data = $input.data("picker");
-					
+
 				if (typeof data !== "undefined") {
 					var $picker = data.$picker;
-					
+
 					$input.prop("disabled", true);
 					$picker.addClass("disabled");
 				}
 			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name enable
 		 * @description Enables target instance
 		 * @example $(".target").picker("enable");
@@ -59,18 +59,18 @@
 			return $(this).each(function(i, input) {
 				var $input = $(input),
 					data = $input.data("picker");
-					
+
 				if (typeof data !== "undefined") {
 					var $picker = data.$picker;
-					
+
 					$input.prop("disabled", false);
 					$picker.removeClass("disabled");
 				}
 			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name destroy
 		 * @description Removes instance of plugin
 		 * @example $(".target").picker("destroy");
@@ -79,13 +79,13 @@
 			return $(this).each(function(i, input) {
 				var $input = $(input),
 					data = $input.data("picker");
-					
+
 				if (typeof data !== "undefined") {
 					var $picker = data.$picker,
 						$handle = $picker.find(".picker-handle"),
 						$labels = $picker.find(".picker-toggle-label"),
 						$label = $("label[for=" + $input.attr("id") + "]");
-					
+
 					// Restore DOM / Unbind click events
 					$picker.off(".picker");
 					$handle.remove();
@@ -98,9 +98,9 @@
 				}
 			});
 		},
-		
+
 		/**
-		 * @method 
+		 * @method
 		 * @name update
 		 * @description Updates instance of plugin
 		 * @example $(".target").picker("update");
@@ -109,7 +109,7 @@
 			return $(this).each(function(i, input) {
 				var $input = $(input),
 					data = $input.data("picker");
-				
+
 				if (typeof data !== "undefined" && !$input.is(":disabled")) {
 					if ($input.is(":checked")) {
 						_onSelect({ data: data }, true);
@@ -120,7 +120,7 @@
 			});
 		}
 	};
-	
+
 	/**
 	 * @method private
 	 * @name _init
@@ -130,7 +130,7 @@
 	function _init(opts) {
 		// Settings
 		opts = $.extend({}, options, opts);
-		
+
 		// Apply to each element
 		var $items = $(this);
 		for (var i = 0, count = $items.length; i < count; i++) {
@@ -138,7 +138,7 @@
 		}
 		return $items;
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _build
@@ -150,39 +150,39 @@
 		if (!$input.data("picker")) {
 			// EXTEND OPTIONS
 			opts = $.extend({}, opts, $input.data("picker-options"));
-			
+
 			var $label = $("label[for=" + $input.attr("id") + "]"),
 				type = $input.attr("type"),
 				typeClass = "picker-" + (type === "radio" ? "radio" : "checkbox"),
 				group = $input.attr("name"),
 				html = '<div class="picker-handle"><div class="picker-flag" /></div>';
-			
+
 			if (opts.toggle) {
 				typeClass += " picker-toggle";
 				html = '<span class="picker-toggle-label on">' + opts.labelOn + '</span><span class="picker-toggle-label off">' + opts.labelOff + '</span>' + html;
 			}
-			
+
 			// Modify DOM
 			$input.addClass("picker-element");
 			$label.wrap('<div class="picker ' + typeClass + ' ' + opts.customClass + '" />')
 				  .before(html)
 				  .addClass("picker-label");
-			
+
 			// Store plugin data
 			var $picker = $label.parents(".picker"),
 				$handle = $picker.find(".picker-handle"),
 				$labels = $picker.find(".picker-toggle-label");
-			
+
 			// Check checked
 			if ($input.is(":checked")) {
 				$picker.addClass("checked");
 			}
-			
+
 			// Check disabled
 			if ($input.is(":disabled")) {
 				$picker.addClass("disabled");
 			}
-			
+
 			$.extend(opts, {
 				$picker: $picker,
 				$input: $input,
@@ -193,18 +193,18 @@
 				isRadio: (type === "radio"),
 				isCheckbox: (type === "checkbox")
 			});
-			
+
 			// Bind click events
 			$input.on("focus.picker", opts, _onFocus)
 				  .on("blur.picker", opts, _onBlur)
 				  .on("change.picker", opts, _onChange)
 				  .on("deselect.picker", opts, _onDeselect)
 				  .data("picker", opts);
-			
+
 			$picker.on("click.picker", opts, _onClick);
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onClick
@@ -214,14 +214,14 @@
 	function _onClick(e) {
 		e.preventDefault();
 		e.stopPropagation();
-		
+
 		var data = e.data;
-		
+
 		if (!$(e.target).is(data.$input)) {
 			data.$input.trigger("click");
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onChange
@@ -232,9 +232,9 @@
 		//if ($(e.currentTarget).parents(".picker").length === 0) {
 		//	e.stopPropagation();
 		//}
-		
+
 		var data = e.data;
-		
+
 		if (!data.$input.is(":disabled")) {
 			// Checkbox change events fire after state has changed
 			var checked = data.$input.is(":checked");
@@ -252,7 +252,7 @@
 			}
 		}
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onSelect
@@ -262,14 +262,14 @@
 	 */
 	function _onSelect(e, internal) {
 		var data = e.data;
-		
+
 		if (typeof data.group !== "undefined" && data.isRadio) {
 			$('input[name="' + data.group + '"]').not(data.$input).trigger("deselect");
 		}
-		
+
 		data.$picker.addClass("checked");
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onDeselect
@@ -279,10 +279,10 @@
 	 */
 	function _onDeselect(e, internal) {
 		var data = e.data;
-		
+
 		data.$picker.removeClass("checked");
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onFocus
@@ -292,7 +292,7 @@
 	function _onFocus(e) {
 		e.data.$picker.addClass("focus");
 	}
-	
+
 	/**
 	 * @method private
 	 * @name _onBlur
@@ -302,7 +302,7 @@
 	function _onBlur(e) {
 		e.data.$picker.removeClass("focus");
 	}
-	
+
 	$.fn.picker = function(method) {
 		if (pub[method]) {
 			return pub[method].apply(this, Array.prototype.slice.call(arguments, 1));
@@ -310,5 +310,11 @@
 			return _init.apply(this, arguments);
 		}
 		return this;
+	};
+
+	$.picker = function(method) {
+		if (method === "defaults") {
+			pub.defaults.apply(this, Array.prototype.slice.call(arguments, 1));
+		}
 	};
 })(jQuery);
