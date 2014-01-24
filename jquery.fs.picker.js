@@ -161,7 +161,7 @@
 			// EXTEND OPTIONS
 			opts = $.extend({}, opts, $input.data("picker-options"));
 
-			var $label = $("label[for=" + $input.attr("id") + "]"),
+			var $label = $input.parent().is("label") ? $input.parent() : $("label[for=" + $input.attr("id") + "]"),
 				type = $input.attr("type"),
 				typeClass = "picker-" + (type === "radio" ? "radio" : "checkbox"),
 				group = $input.attr("name"),
