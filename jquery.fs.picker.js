@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.3 - 2014-01-13 
+ * Picker v3.0.4 - 2014-01-24 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -193,7 +193,7 @@
 				$picker.addClass("disabled");
 			}
 
-			$.extend(opts, {
+			var data = $.extend({}, opts, {
 				$picker: $picker,
 				$input: $input,
 				$handle: $handle,
@@ -205,13 +205,14 @@
 			});
 
 			// Bind click events
-			$input.on("focus.picker", opts, _onFocus)
-				  .on("blur.picker", opts, _onBlur)
-				  .on("change.picker", opts, _onChange)
-				  .on("deselect.picker", opts, _onDeselect)
-				  .data("picker", opts);
+			data.$input.on("focus.picker", data, _onFocus)
+					   .on("blur.picker", data, _onBlur)
+					   .on("change.picker", data, _onChange)
+					   .on("click.picker", data, _onClick)
+					   .on("deselect.picker", data, _onDeselect)
+					   .data("picker", data);
 
-			$picker.on("click.picker", opts, _onClick);
+			data.$picker.on("click.picker", data, _onClick);
 		}
 	}
 
@@ -222,12 +223,13 @@
 	 * @param e [object] "Event data"
 	 */
 	function _onClick(e) {
-		e.preventDefault();
 		e.stopPropagation();
 
 		var data = e.data;
 
 		if (!$(e.target).is(data.$input)) {
+			e.preventDefault();
+
 			data.$input.trigger("click");
 		}
 	}
