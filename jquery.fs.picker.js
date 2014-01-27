@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.6 - 2014-01-24 
+ * Picker v3.0.7 - 2014-01-27 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -161,7 +161,8 @@
 			// EXTEND OPTIONS
 			opts = $.extend({}, opts, $input.data("picker-options"));
 
-			var $label = $input.parent().is("label") ? $input.parent() : $("label[for=" + $input.attr("id") + "]"),
+			var parent = $input.closest("label"),
+				$label = parent.length ? parent : $("label[for=" + $input.attr("id") + "]"),
 				type = $input.attr("type"),
 				typeClass = "picker-" + (type === "radio" ? "radio" : "checkbox"),
 				group = $input.attr("name"),
