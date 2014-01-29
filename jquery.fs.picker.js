@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.7 - 2014-01-27 
+ * Picker v3.0.8 - 2014-01-29 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -47,24 +47,17 @@
 		 */
 		destroy: function() {
 			return $(this).each(function(i, input) {
-				var $input = $(input),
-					data = $input.data("picker");
+				var data = $(input).data("picker");
 
-				if (typeof data !== "undefined") {
-					var $picker = data.$picker,
-						$handle = $picker.find(".picker-handle"),
-						$labels = $picker.find(".picker-toggle-label"),
-						$label = $("label[for=" + $input.attr("id") + "]");
-
-					// Restore DOM / Unbind click events
-					$picker.off(".picker");
-					$handle.remove();
-					$labels.remove();
-					$input.off(".picker")
-						  .removeClass("picker-element")
-						  .data("picker", null);
-					$label.removeClass("picker-label")
-						  .unwrap();
+				if (data !== null) {
+					data.$picker.off(".picker");
+					data.$handle.remove();
+					data.$labels.remove();
+					data.$input.off(".picker")
+							   .removeClass("picker-element")
+							   .data("picker", null);
+					data.$label.removeClass("picker-label")
+							   .unwrap();
 				}
 			});
 		},
@@ -77,14 +70,11 @@
 		 */
 		disable: function() {
 			return $(this).each(function(i, input) {
-				var $input = $(input),
-					data = $input.data("picker");
+				var data = $(input).data("picker");
 
-				if (typeof data !== "undefined") {
-					var $picker = data.$picker;
-
-					$input.prop("disabled", true);
-					$picker.addClass("disabled");
+				if (data !== null) {
+					data.$input.prop("disabled", true);
+					data.$picker.addClass("disabled");
 				}
 			});
 		},
@@ -97,14 +87,11 @@
 		 */
 		enable: function() {
 			return $(this).each(function(i, input) {
-				var $input = $(input),
-					data = $input.data("picker");
+				var data = $(input).data("picker");
 
-				if (typeof data !== "undefined") {
-					var $picker = data.$picker;
-
-					$input.prop("disabled", false);
-					$picker.removeClass("disabled");
+				if (data !== null) {
+					data.$input.prop("disabled", false);
+					data.$picker.removeClass("disabled");
 				}
 			});
 		},
@@ -117,11 +104,10 @@
 		 */
 		update: function() {
 			return $(this).each(function(i, input) {
-				var $input = $(input),
-					data = $input.data("picker");
+				var data = $(input).data("picker");
 
-				if (typeof data !== "undefined" && !$input.is(":disabled")) {
-					if ($input.is(":checked")) {
+				if (data !== null && !data.$input.is(":disabled")) {
+					if (data.$input.is(":checked")) {
 						_onSelect({ data: data }, true);
 					} else {
 						_onDeselect({ data: data }, true);

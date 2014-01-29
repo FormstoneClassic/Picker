@@ -47,6 +47,9 @@
 		     -o-transition: left 0.1s linear;
 		        transition: left 0.1s linear;
 	}
+	/*
+	.picker.picker-toggle .picker-flag:after { content: '' !important; }
+	*/
 	.picker.picker-toggle.checked .picker-toggle-label.on { color: #333; }
 	.picker.picker-toggle.checked .picker-toggle-label.off { color: #999; }
 	.picker.picker-toggle.checked .picker-flag { background: #666; left: 0; }
@@ -56,10 +59,10 @@
 	.picker.disabled .picker-label { cursor: default; }
 	.picker.disabled .picker-handle { cursor: default; }
 
-	.picker.picker-checkbox.disabled .picker-flag::after { color: #eee; content: ''; }
-	.picker.picker-checkbox.disabled.checked .picker-flag::after { color: #eee; content: '\2714'; }
-
-
+	/*
+	.picker.picker-checkbox.disabled .picker-flag:after { color: #eee; content: ''; }
+	.picker.picker-checkbox.disabled.checked .picker-flag:after { color: #eee; content: '\2714'; }
+	*/
 
 	@media screen and (min-width: 740px) {
 		.picker:hover .picker-label { color: #555; }
