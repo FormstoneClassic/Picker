@@ -41,7 +41,7 @@
 			return $(this).each(function(i, input) {
 				var data = $(input).data("picker");
 
-				if (data !== null) {
+				if (data) {
 					data.$picker.off(".picker");
 					data.$handle.remove();
 					data.$labels.remove();
@@ -64,7 +64,7 @@
 			return $(this).each(function(i, input) {
 				var data = $(input).data("picker");
 
-				if (data !== null) {
+				if (data) {
 					data.$input.prop("disabled", true);
 					data.$picker.addClass("disabled");
 				}
@@ -81,7 +81,7 @@
 			return $(this).each(function(i, input) {
 				var data = $(input).data("picker");
 
-				if (data !== null) {
+				if (data) {
 					data.$input.prop("disabled", false);
 					data.$picker.removeClass("disabled");
 				}
@@ -98,7 +98,7 @@
 			return $(this).each(function(i, input) {
 				var data = $(input).data("picker");
 
-				if (data !== null && !data.$input.is(":disabled")) {
+				if (data && !data.$input.is(":disabled")) {
 					if (data.$input.is(":checked")) {
 						_onSelect({ data: data }, true);
 					} else {
