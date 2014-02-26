@@ -1,6 +1,8 @@
 ;(function ($, window) {
 	"use strict";
 
+	var isIE8 = (document.all && document.querySelector && !document.addEventListener);
+
 	/**
 	 * @options
 	 * @param customClass [string] <''> "Class applied to instance"
@@ -220,10 +222,6 @@
 	 * @param e [object] "Event data"
 	 */
 	function _onChange(e) {
-		//if ($(e.currentTarget).parents(".picker").length === 0) {
-		//	e.stopPropagation();
-		//}
-
 		var data = e.data;
 
 		if (!data.$input.is(":disabled")) {
@@ -237,7 +235,7 @@
 				}
 			} else {
 				// radio
-				if (checked) {
+				if (checked || (isIE8 && !checked)) {
 					_onSelect(e);
 				}
 			}

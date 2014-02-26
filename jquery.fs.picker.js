@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.9 - 2014-02-06 
+ * Picker v3.0.10 - 2014-02-26 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -8,6 +8,8 @@
 
 ;(function ($, window) {
 	"use strict";
+
+	var isIE8 = (document.all && document.querySelector && !document.addEventListener);
 
 	/**
 	 * @options
@@ -228,10 +230,6 @@
 	 * @param e [object] "Event data"
 	 */
 	function _onChange(e) {
-		//if ($(e.currentTarget).parents(".picker").length === 0) {
-		//	e.stopPropagation();
-		//}
-
 		var data = e.data;
 
 		if (!data.$input.is(":disabled")) {
@@ -245,7 +243,7 @@
 				}
 			} else {
 				// radio
-				if (checked) {
+				if (checked || (isIE8 && !checked)) {
 					_onSelect(e);
 				}
 			}
