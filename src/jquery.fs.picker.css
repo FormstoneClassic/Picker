@@ -1,13 +1,9 @@
- 	.picker-element { *left: -99999px; opacity: 0; position: absolute; z-index: -1;
+ 	.picker-element { opacity: 0; position: absolute; z-index: -1;
 	 	-webkit-transition: none;
 	 	   -moz-transition: none;
 	 	    -ms-transition: none;
 	 	     -o-transition: none;
 	 	        transition: none;
- 	}
-
- 	@media \0screen {
-	 	.picker-element { position: relative; left: 100px; }
  	}
 
 	.picker { cursor: pointer; margin: 0 0 10px 0; overflow: hidden; }
@@ -52,9 +48,6 @@
 		     -o-transition: left 0.1s linear;
 		        transition: left 0.1s linear;
 	}
-	/*
-	.picker.picker-toggle .picker-flag:after { content: '' !important; }
-	*/
 	.picker.picker-toggle.checked .picker-toggle-label.on { color: #333; }
 	.picker.picker-toggle.checked .picker-toggle-label.off { color: #999; }
 	.picker.picker-toggle.checked .picker-flag { background: #666; left: 0; }
@@ -63,11 +56,6 @@
 	.picker.disabled { cursor: default; opacity: 0.5; }
 	.picker.disabled .picker-label { cursor: default; }
 	.picker.disabled .picker-handle { cursor: default; }
-
-	/*
-	.picker.picker-checkbox.disabled .picker-flag:after { color: #eee; content: ''; }
-	.picker.picker-checkbox.disabled.checked .picker-flag:after { color: #eee; content: '\2714'; }
-	*/
 
 	@media screen and (min-width: 740px) {
 		.picker:hover .picker-label { color: #555; }
@@ -80,3 +68,10 @@
 
 		.picker.picker-radio.disabled:hover .picker-flag { background: #fff; }
 	}
+
+	/* IE8 */
+	@media \0screen {
+	 	.picker-element { left: -99999px; }
+
+	 	.picker.disabled { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
+ 	}
