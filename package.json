@@ -2,7 +2,7 @@
   "name": "Picker",
   "id": "picker",
   "codename": "jquery.fs.picker",
-  "version": "3.0.11",
+  "version": "3.0.12",
   "description": "A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library.",
   "keywords": [
   	"radio",

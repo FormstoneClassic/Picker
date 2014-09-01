@@ -1,5 +1,5 @@
 /* 
- * Picker v3.0.11 - 2014-02-26 
+ * Picker v3.0.12 - 2014-09-01 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
@@ -8,9 +8,6 @@
 
  	.picker-element { opacity: 0; position: absolute; z-index: -1;
 	 	-webkit-transition: none;
-	 	   -moz-transition: none;
-	 	    -ms-transition: none;
-	 	     -o-transition: none;
 	 	        transition: none;
  	}
 
@@ -19,7 +16,6 @@
 		-webkit-user-select: none;
 		   -moz-user-select: none;
 		    -ms-user-select: none;
-		     -o-user-select: none;
 		        user-select: none;
 	}
 	.picker .picker-handle { border: 1px solid #ccc; display: block; float: left; height: 16px; margin: 0 5px 0 0; width: 16px; }
@@ -51,9 +47,6 @@
 	.picker.picker-toggle .picker-handle { border-radius: 3px; height: 20px; position: relative; width: 100%; }
 	.picker.picker-toggle .picker-flag { background: #666; border-radius: 2px; display: block; height: 100%; left: 50%; margin: 0; position: absolute; top: 0; width: 50%;
 		-webkit-transition: left 0.1s linear;
-		   -moz-transition: left 0.1s linear;
-		    -ms-transition: left 0.1s linear;
-		     -o-transition: left 0.1s linear;
 		        transition: left 0.1s linear;
 	}
 	.picker.picker-toggle.checked .picker-toggle-label.on { color: #333; }
