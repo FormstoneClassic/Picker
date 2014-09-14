@@ -1,6 +1,6 @@
 {
   "name": "picker",
-  "version": "3.0.12",
+  "version": "3.0.13",
   "title": "Picker",
   "author": {
     "name": "Ben Plum",
@@ -25,12 +25,11 @@
     "ui",
     "javascript",
     "jquery",
-    "formstone",
-    "benplum"
+    "formstone"
   ],
   "docs": "http://formstone.it/picker/",
   "demo": "http://formstone.it/picker/",
-  "download": "https://github.com/benplum/Picker",
-  "bugs": "https://github.com/benplum/Picker/issues",
+  "download": "https://github.com/Formstone/Picker",
+  "bugs": "https://github.com/Formstone/Picker/issues",
   "homepage": "http://formstone.it/picker/"
 }
