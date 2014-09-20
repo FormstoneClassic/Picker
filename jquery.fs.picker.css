@@ -1,78 +1,156 @@
 /* 
- * Picker v3.0.14 - 2014-09-14 
+ * Picker v3.1.0 - 2014-09-20 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
  * http://formstone.it/picker/ 
  * 
  * Copyright 2014 Ben Plum; MIT Licensed 
- */ 
+ */
 
- 	.picker-element { opacity: 0; position: absolute; z-index: -1;
-	 	-webkit-transition: none;
-	 	        transition: none;
- 	}
-
-	.picker { cursor: pointer; margin: 0 0 10px 0; overflow: hidden; }
-	.picker .picker-label { color: #888; cursor: pointer; display: block; float: left; font-size: 14px; line-height: 16px;
-		-webkit-user-select: none;
-		   -moz-user-select: none;
-		    -ms-user-select: none;
-		        user-select: none;
-	}
-	.picker .picker-handle { border: 1px solid #ccc; display: block; float: left; height: 16px; margin: 0 5px 0 0; width: 16px; }
-
-	/* Focus */
-	.picker.focus .picker-label { color: #555; }
-	.picker.focus .picker-handle { border-color: #aaa; }
-
-	/* Radio Input */
-	.picker.picker-radio .picker-handle { border-radius: 8px; }
-	.picker.picker-radio .picker-flag { background: #fff; display: block; border-radius: 4px; height: 8px; margin: 3px; width: 8px; }
-
-	.picker.picker-radio.focus .picker-flag { background: #ddd; }
-	.picker.picker-radio.checked .picker-flag { background: #999; }
-
-	/* Checkbox Input */
-	.picker.picker-checkbox .picker-handle { border-radius: 3px; }
-	.picker.picker-checkbox .picker-flag { background: #fff; border-radius: 2px; display: block; height: 100%; margin: 0; width: 100%; }
-
-	/* 'Checked' */
-	.picker.picker-checkbox.checked .picker-flag { background: #fff url(jquery.fs.picker-icon.png) no-repeat center; }
-
-	/* 'Toggle' Style Input */
-	.picker.picker-toggle { padding: 20px 0 0; position: relative; }
-	.picker.picker-toggle .picker-toggle-label { color: #999; font-size: 12px; position: absolute; text-transform: uppercase; top: 0; }
-	.picker.picker-toggle .picker-toggle-label.on { left: 0; }
-	.picker.picker-toggle .picker-toggle-label.off { color: #333; right: 0; }
-	.picker.picker-toggle .picker-label { display: none; }
-	.picker.picker-toggle .picker-handle { border-radius: 3px; height: 20px; position: relative; width: 100%; }
-	.picker.picker-toggle .picker-flag { background: #666; border-radius: 2px; display: block; height: 100%; left: 50%; margin: 0; position: absolute; top: 0; width: 50%;
-		-webkit-transition: left 0.1s linear;
-		        transition: left 0.1s linear;
-	}
-	.picker.picker-toggle.checked .picker-toggle-label.on { color: #333; }
-	.picker.picker-toggle.checked .picker-toggle-label.off { color: #999; }
-	.picker.picker-toggle.checked .picker-flag { background: #666; left: 0; }
-
-	/* 'Disabled' State */
-	.picker.disabled { cursor: default; opacity: 0.5; }
-	.picker.disabled .picker-label { cursor: default; }
-	.picker.disabled .picker-handle { cursor: default; }
-
-	@media screen and (min-width: 740px) {
-		.picker:hover .picker-label { color: #555; }
-		.picker:hover .picker-handle { border-color: #aaa; }
-
-		.picker.picker-radio:hover .picker-flag { background: #ddd; }
-
-		.picker.disabled:hover .picker-label { color: #888; }
-		.picker.disabled:hover .picker-handle { border-color: #ccc; }
-
-		.picker.picker-radio.disabled:hover .picker-flag { background: #fff; }
-	}
-
-	/* IE8 */
-	@media \0screen {
-	 	.picker-element { left: -99999px; }
-
-	 	.picker.disabled { -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; }
- 	}
+.picker-element {
+  opacity: 0;
+  position: absolute;
+  -webkit-transition: none;
+          transition: none;
+  z-index: -1;
+}
+.no-touch .picker-element {
+  left: -99999px;
+}
+.picker {
+  cursor: pointer;
+  margin: 0 0 10px 0;
+  overflow: hidden;
+}
+.picker .picker-label {
+  color: #888;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-size: 14px;
+  line-height: 16px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.picker .picker-handle {
+  border: 1px solid #ccc;
+  display: block;
+  float: left;
+  height: 16px;
+  margin: 0 5px 0 0;
+  width: 16px;
+}
+.no-touch .picker:hover .picker-label {
+  color: #555;
+}
+.no-touch .picker:hover .picker-handle {
+  border-color: #aaa;
+}
+.picker.focus .picker-label {
+  color: #555;
+}
+.picker.focus .picker-handle {
+  border-color: #aaa;
+}
+.picker.picker-radio .picker-handle {
+  border-radius: 8px;
+}
+.picker.picker-radio .picker-flag {
+  background: #fff;
+  border-radius: 4px;
+  display: block;
+  height: 8px;
+  margin: 3px;
+  width: 8px;
+}
+.picker.picker-radio.focus .picker-flag {
+  background: #ddd;
+}
+.picker.picker-radio.checked .picker-flag {
+  background: #999;
+}
+.no-touch .picker.picker-radio:hover .picker-flag {
+  background: #ddd;
+}
+.no-touch .picker.picker-radio.disabled:hover .picker-flag {
+  background: #fff;
+}
+.picker.picker-checkbox .picker-handle {
+  border-radius: 3px;
+}
+.picker.picker-checkbox .picker-flag {
+  background: #fff;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+.picker.picker-checkbox.checked .picker-flag {
+  background: #ffffff url(jquery.fs.picker-icon.png) no-repeat center;
+}
+.picker.picker-toggle {
+  padding: 20px 0 0;
+  position: relative;
+}
+.picker.picker-toggle .picker-toggle-label {
+  color: #999;
+  font-size: 12px;
+  position: absolute;
+  text-transform: uppercase;
+  top: 0;
+}
+.picker.picker-toggle .picker-toggle-label.on {
+  left: 0;
+}
+.picker.picker-toggle .picker-toggle-label.off {
+  color: #333;
+  right: 0;
+}
+.picker.picker-toggle .picker-label {
+  display: none;
+}
+.picker.picker-toggle .picker-handle {
+  border-radius: 3px;
+  height: 20px;
+  position: relative;
+  width: 100%;
+}
+.picker.picker-toggle .picker-flag {
+  background: #666;
+  border-radius: 2px;
+  display: block;
+  height: 100%;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  width: 50%;
+  -webkit-transition: left 0.1s linear;
+          transition: left 0.1s linear;
+}
+.picker.picker-toggle.checked .picker-toggle-label.on {
+  color: #333;
+}
+.picker.picker-toggle.checked .picker-toggle-label.off {
+  color: #999;
+}
+.picker.picker-toggle.checked .picker-flag {
+  background: #666;
+  left: 0;
+}
+.picker.disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+.picker.disabled .picker-label,
+.picker.disabled .picker-handle {
+  cursor: default;
+}
+.no-touch .picker.disabled:hover .picker-label {
+  color: #888;
+}
+.no-touch .picker.disabled:hover .picker-handle {
+  border-color: #ccc;
+}
