@@ -165,7 +165,7 @@
 			}
 
 			// Store plugin data
-			var $picker = $label.parents(".picker"),
+			var $picker = ($label.length) ? $label.parents(".picker") : $input.prev(".picker"),
 				$handle = $picker.find(".picker-handle"),
 				$labels = $picker.find(".picker-toggle-label");
 
