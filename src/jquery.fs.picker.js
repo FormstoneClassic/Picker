@@ -161,7 +161,7 @@
 					  .before(html)
 					  .addClass("picker-label");
 			} else {
-				$input.before(html);
+				$input.before('<div class="picker ' + typeClass + ' ' + opts.customClass + '">' + html + '</div>');
 			}
 
 			// Store plugin data
