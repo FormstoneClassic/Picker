@@ -16,10 +16,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Formstone/Picker"
+    "url": "https://github.com/FormstoneClassic/Picker"
   },
-  "homepage": "http://formstone.it/picker/",
-  "demo": "http://formstone.it/components/Picker/demo/index.html",
+  "homepage": "http://classic.formstone.it/picker/",
+  "demo": "http://classic.formstone.it/components/Picker/demo/index.html",
   "license": "MIT",
   "author": {
     "name": "Ben Plum",

@@ -8,7 +8,7 @@
     "url": "http://www.benplum.com"
   },
   "license": "MIT",
-  "homepage": "http://formstone.it/picker/",
+  "homepage": "http://classic.formstone.it/picker/",
   "main": [
     "jquery.fs.picker.js",
     "jquery.fs.picker.css"

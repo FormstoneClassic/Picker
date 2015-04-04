@@ -27,9 +27,9 @@
     "jquery",
     "formstone"
   ],
-  "docs": "http://formstone.it/picker/",
-  "demo": "http://formstone.it/picker/",
-  "download": "https://github.com/Formstone/Picker",
-  "bugs": "https://github.com/Formstone/Picker/issues",
-  "homepage": "http://formstone.it/picker/"
+  "docs": "http://classic.formstone.it/picker/",
+  "demo": "http://classic.formstone.it/picker/",
+  "download": "https://github.com/FormstoneClassic/Picker",
+  "bugs": "https://github.com/FormstoneClassic/Picker/issues",
+  "homepage": "http://classic.formstone.it/picker/"
 }

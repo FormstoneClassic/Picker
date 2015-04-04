@@ -1,9 +1,9 @@
 /* 
- * Picker v3.1.2 - 2014-11-25 
+ * Picker v3.1.2 - 2015-04-04 
  * A jQuery plugin for replacing default checkboxes and radios. Part of the formstone library. 
- * http://formstone.it/picker/ 
+ * http://classic.formstone.it/picker/ 
  * 
- * Copyright 2014 Ben Plum; MIT Licensed 
+ * Copyright 2015 Ben Plum; MIT Licensed 
  */
 
 ;(function ($, window) {
