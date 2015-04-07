@@ -193,7 +193,7 @@
 			// Bind click events
 			data.$input.on("focus.picker", data, _onFocus)
 					   .on("blur.picker", data, _onBlur)
-					   .on("change.picker", data, _onChange)
+					   .on((isIE8 ? "property": "") + "change.picker", data, _onChange)
 					   .on("click.picker", data, _onClick)
 					   .on("deselect.picker", data, _onDeselect)
 					   .data("picker", data);
