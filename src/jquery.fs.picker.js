@@ -16,7 +16,8 @@
 		labels: {
 			on: "ON",
 			off: "OFF"
-		}
+		},
+		onStateChange:function(state){},
 	};
 
 	var pub = {
@@ -244,6 +245,8 @@
 					_onSelect(e);
 				}
 			}
+			//console.log(options);
+			data.onStateChange(data.$input.is(":checked"));
 		}
 	}
 
